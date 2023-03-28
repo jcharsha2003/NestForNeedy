@@ -1,13 +1,20 @@
 import React from 'react'
 import axios from 'axios'
+import {useForm} from "react-hook-form"
 import { useEffect,useState } from 'react';
 import Card from 'react-bootstrap/Card';
 import Alert from '../products/Alert';
+import Button from 'react-bootstrap/Button';
+
+import Modal from 'react-bootstrap/Modal';
 
 
 
 function Job() {
-
+  let {register,handleSubmit,setValue,getValues,formState:{errors}}=useForm();
+  const [show, setShow] = useState(false);
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
   let [alert,setBoth]=useState(null)
   const showAlert=(message,type)=>{
     setBoth({
@@ -19,6 +26,16 @@ function Job() {
       setBoth(null)
     },4000)
   }
+
+
+  const saveModifiedUser=()=>{
+    handleClose()
+    showAlert("applied successfully","success")
+    
+  }
+
+
+
  let [data,setData]=useState([])
  let [data1,setData1]=useState([])
  useEffect(()=>{
@@ -71,7 +88,7 @@ We organize workshops on the following themes:
 </li>
   
 </ul></p>
-                          <button onClick={()=>showAlert("Successfully booked your room","success")} className="btn btn-dark p-3 fw-bold fs-5">Apply now</button>
+                          <button onClick={handleShow} className="btn btn-dark p-3 fw-bold fs-5">Apply now</button>
                         </div>
                         <div className="col-sm-6">
                             
@@ -114,7 +131,7 @@ Content Writer</li>
   <li class="list-group-item">Designer/ Photographer</li>
   
 </ul></p>
-                          <button onClick={()=>showAlert("Successfully booked your room","success")} className="btn btn-dark p-3 fw-bold fs-5">Book</button>
+                          <button onClick={handleShow} className="btn btn-dark p-3 fw-bold fs-5">Apply Now</button>
                         </div>
                         
                        
@@ -130,7 +147,90 @@ Content Writer</li>
       </div>
       </div>
        
-    </div></div>
+    </div>
+    
+    
+    <Modal show={show} onHide={handleClose} backdrop="static" centered className='modal'>
+        <Modal.Header closeButton>
+          <Modal.Title>Application Form</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+        <form  onSubmit={handleSubmit(saveModifiedUser)}>
+          <div className='row row-cols-1 row-cols-sm-2'>
+            <div className='col'>
+                <label htmlFor='username'  className='form-label'>User Name</label>
+                <input type="text" id='username'  className='form-control bg-light' 
+                {...register("username",{required:true,minLength:6,maxLength:10})} disabled
+                ></input>
+                {
+                    errors.username?.type==="required" && <p className=' text-danger'>*enter your first name</p>
+                }
+                {
+                    errors.username?.type==="minLength" && <p className=' text-danger'>*minimum 4 letter word is required</p>
+                }
+                {
+                    errors.username?.type==="maxLength" && <p className=' text-danger'>*maximum 6 letter word is required</p>
+                }
+
+            </div>
+           
+          </div>
+          {/* second row for date of birth  */}
+          <div className='row row-cols-1 row-cols-sm-2'>
+            <div className='col'>
+                <label htmlFor='dob'  className='form-label'>date of birth</label>
+                <input type="date" id='dob'  className='form-control bg-light' {...register("dob",{required:true})}></input>
+                {errors.dob?.type==="required" && <span className='text-sm text-danger'>*birthday is required</span>}
+            </div>
+            
+          </div>
+          {/* third row  contains Email and Phone Number*/}
+          <div className='row row-cols-1 '>
+            <div className='col'>
+                <label htmlFor='email'  className='form-label'>Email</label>
+                <input type="email" id='email'  className='form-control bg-light'{...register("email",{required:true})} ></input>
+                {
+                    errors.email?.type==="required" && <p className=' text-danger'>*enter your valid email id</p>
+                }
+            </div>
+            <div className='col'>
+            <label htmlFor='phone' className='form-label'>Phone Number</label>
+                <input type="number" id='phone' className='form-control bg-light' {...register("phone",{required:true,maxLength:11})}  ></input>
+                {
+                    errors.phone?.type==="required" && <p className=' text-danger'>*enter your Phone number</p>
+                }
+                {
+                    errors.phone?.type==="maxLength" && <p className=' text-danger'>*maximum number length should be 10</p>
+                }
+            </div>
+           
+          
+            <div className='col'>
+            <label htmlFor='phone' className='form-label'>Addarcard Number</label>
+                <input type="number" id='phone' className='form-control bg-light' {...register("phone",{required:true,maxLength:11})}  ></input>
+                {
+                    errors.phone?.type==="required" && <p className=' text-danger'>*enter your Phone number</p>
+                }
+                {
+                    errors.phone?.type==="maxLength" && <p className=' text-danger'>*maximum number length should be 10</p>
+                }
+            </div>
+          </div>
+          
+          
+          
+          </form>
+        </Modal.Body>
+        <Modal.Footer>
+          <Button variant="secondary" onClick={handleClose}>
+            Close
+          </Button>
+          <Button variant="primary" type="submit" onClick={saveModifiedUser}>
+            Apply
+          </Button>
+        </Modal.Footer>
+      </Modal>
+    </div>
   )
 }
 
