@@ -20,43 +20,43 @@ function Home() {
   return (
     
     <div className='text-center'>
-        <p className='lead display-1'>Home</p>
-        <Carousel>
-      <Carousel.Item>
-        <img
-          className="d-block w-100"
-          src="https://images.pexels.com/photos/355465/pexels-photo-355465.jpeg?auto=compress&cs=tinysrgb&w=600"
-          alt="First slide"
-        />
-        <Carousel.Caption>
-          <h3>First slide label</h3>
-          <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
-        </Carousel.Caption>
-      </Carousel.Item>
-      <Carousel.Item>
-        <img
-          className="d-block w-100"
-          src=""
-          alt="Second slide"
-        />
-
-        <Carousel.Caption>
-          <h3>Second slide label</h3>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-        </Carousel.Caption>
-      </Carousel.Item>
+        <p className='lead display-1'></p>
+        <Carousel className='h-50'>
       <Carousel.Item>
         <img
           className="d-block w-100"
           src="https://static.wixstatic.com/media/8b2558_51614afd2efe4d1291b696172a127324~mv2.jpg/v1/fill/w_850,h_624,al_c,q_85,usm_0.66_1.00_0.01,enc_auto/8b2558_51614afd2efe4d1291b696172a127324~mv2.jpg"
+          alt="First slide"
+          height="15%"
+        />
+        <Carousel.Caption>
+          <h3 className='text-white'>Government</h3>
+         
+        </Carousel.Caption>
+      </Carousel.Item>
+      <Carousel.Item>
+        <img
+          className="d-block w-100"
+          src="https://www.netleafinfosoft.com/our-blog/wp-content/uploads/2020/06/website-designing.jpg"
+          alt="Second slide"
+        />
+
+        <Carousel.Caption>
+        <h3 className='text-dark'>Services</h3>
+        <p className='text-dark fs-3'>Jobs</p>
+        </Carousel.Caption>
+      </Carousel.Item>
+      <Carousel.Item>
+        <img
+          className="d-block w-100"
+          
+          src="https://www.sesameworkshopindia.org/sites/default/files/imageservicecache/2021-08/596ecbe217cd7dd80b5908dc09e26f0f_0.jpg/0a01c02050b1dd4e04d08fd170771e26.jpg"
           alt="Third slide"
         />
 
         <Carousel.Caption>
-          <h3>Third slide label</h3>
-          <p>
-            Praesent commodo cursus magna, vel scelerisque nisl consectetur.
-          </p>
+        <h3 className='text-dark display-1'>Our Funders</h3>
+       
         </Carousel.Caption>
       </Carousel.Item>
     </Carousel>

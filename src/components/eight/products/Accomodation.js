@@ -39,7 +39,7 @@ function Accomodation() {
                          <div className="col-sm-6 m-auto">
                             {/* <h1 className="text-black fs-1 fw-bold">Number of bedrooms:{element.bedroom}</h1>
                             <p className="lead text-black fs-4 fw-bold">Price:{element.price}</p> */}
-                          <button onClick={()=>showAlert("Successfully booked your room","success")} className="btn btn-dark p-3 fw-bold fs-5"><a className='text-decoration-none text-whit' href='https://www.oyorooms.com/?utm_device=c&utm_adgroup=143959616297'>Accomodation</a>  </button>
+                          <button onClick={()=>showAlert("Successfully booked your room","success")} className="btn btn-dark p-3 fw-bold fs-5"><a className='text-decoration-none text-white' href='https://www.oyorooms.com/?utm_device=c&utm_adgroup=143959616297'>Accomodation</a>  </button>
                         </div>
                         <div className="col-sm-6">
                             
@@ -54,7 +54,24 @@ function Accomodation() {
       }
       </div>
        
-    </div></div>
+    </div>
+    <div className="card m-5" >
+                <div className="card-body">
+                    <div className="row">
+                    <div className="col-sm-6">
+                            
+                            <Card.Img variant="top" src="https://global-uploads.webflow.com/5e157548d6f7910beea4e2d6/62dea560b1b7f70d33e0277b_free-logos-government.png" className="w-100" />
+                         </div>
+                       
+                         <div className="col-sm-6 m-auto">
+                            {/* <h1 className="text-black fs-1 fw-bold">Number of bedrooms:{element.bedroom}</h1>
+                            <p className="lead text-black fs-4 fw-bold">Price:{element.price}</p> */}
+                          <button onClick={()=>showAlert("Applied waiting for response","success")} className="btn btn-dark p-3 fw-bold fs-5">APPLY FOR GOVERNMENT AID </button>
+                        </div>
+                       
+                    </div>
+                </div>
+            </div></div>
   )
 }
 
